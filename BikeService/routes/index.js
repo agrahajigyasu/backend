@@ -56,4 +56,19 @@ router.get('/bikeservice/team', (request, response, next) => {
   response.end(JSON.stringify(team.list()));
 });
 
+router.post('/bikeservice/add', function( req, res, next) {
+  console.log(req.body);
+  const bike = req.body;
+  console.log(bike);
+  let added = bikes.add_bike(bike);
+  res.setHeader('content-type', 'application/json');
+  if(added){
+    res.status(201);
+    res.end("Success");
+  } else {
+    res.status(500);
+    res.end("Could not write object to JSON file");
+  }
+});
+
 module.exports = router;
