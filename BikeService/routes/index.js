@@ -9,14 +9,14 @@ router.get('/', function(req, res, next) {
   res.status(200).send({ 
     status: "Good To Go!" ,
     links: [
-      "/bikes/all/:location",
-      "/bikes/team"
+      "/bikeservice/all/:location",
+      "/bikeservice/team"
     ]});
 });
 
-router.get('/bikes/all/:location', (request, response, next) => {
+router.get('/bikeservice/all/:location', (request, response, next) => {
   const param = request.params.location;
-  console.log('got into bikes/all/:location ' + param);
+  console.log('got into bikeservice/all/:location ' + param);
   const result = bikes.add_tax(param);
   if (result) {
     response.setHeader('content-type', 'application/json');
@@ -26,7 +26,7 @@ router.get('/bikes/all/:location', (request, response, next) => {
   }
 });
 
-router.get('/bikes/all', (request, response, next) => {
+router.get('/bikeservice/all', (request, response, next) => {
   let get_params = url.parse(request.url, true).query;
   console.log('got into bikes');
   if (Object.keys(get_params).length == 0) {
@@ -50,7 +50,7 @@ router.get('/bikes/all', (request, response, next) => {
 });
 
 
-router.get('/bikes/team', (request, response, next) => {
+router.get('/bikeservice/team', (request, response, next) => {
   console.log('got into team');
   response.setHeader('content-type', 'application/json');
   response.end(JSON.stringify(team.list()));
