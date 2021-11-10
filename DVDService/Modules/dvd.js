@@ -28,3 +28,18 @@ exports.get_taxed_dvds = (salesTax) => {
     return json_result;
 };
 
+exports.add_dvd = (dvdToAdd) => {
+    try {
+        let json_result = JSON.parse(read_json_file());
+        json_result.push(dvdToAdd);
+        let data = JSON.stringify(json_result);
+        fs.writeFileSync('./data/DVDsjson.json', data);
+        console.log(JSON.parse(read_json_file()));
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+    
+}
+
