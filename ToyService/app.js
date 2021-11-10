@@ -27,7 +27,8 @@ app.use(function(req, res, next) {
     URLs: [
       "/",
       "/toyservice/all/:location",
-      "/toyservice/team"
+      "/toyservice/team",
+      '/toyservice/add'
     ]});
 });
 
