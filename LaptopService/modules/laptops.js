@@ -27,3 +27,16 @@ exports.priceList = (location) => {
     }
     return result;
 };
+
+exports.addLaptop = (laptop) => {
+    try {
+        let result = JSON.parse(readJsonFile('./data/Laptopsjson.json'));
+        result.push(laptop);
+        let data = JSON.stringify(result);
+        fs.writeFileSync('./data/Laptopsjson.json', data);
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
