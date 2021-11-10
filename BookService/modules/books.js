@@ -13,19 +13,18 @@ exports.list = function() {
 }
 
 
-exports.add_book = (bookToAdd) => {
+exports.add_book = (book) => {
     try {
-        let json_result = JSON.parse(read_json_file());
-        json_result.push(bookToAdd);
-        let data = JSON.stringify(json_result);
+        let result = JSON.parse(read_json_file('./data/Booksjson.json'));
+        result.push(book);
+        let data = JSON.stringify(result);
         fs.writeFileSync('./data/Booksjson.json', data);
-        console.log(JSON.parse(read_json_file()));
         return true;
     } catch (error) {
         console.log(error);
         return false;
     }
-}
+};
 
 exports.price_difference = (value) => {
     let result = JSON.parse(read_json_file());
