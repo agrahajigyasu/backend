@@ -1,8 +1,12 @@
 let request= require("request");
-const base_url= "http://localhost:3021/";
-const teamUrl = base_url+ 'classA/bikeservice/team/';
-const toyUrl = base_url + "classA/toyservice/all/";
-const foodUrl =  base_url + "classA/foodservice/all/";
+const urlList=require('./../../../urls');
+//const base_url= "http://localhost:3021/";
+const teamUrl = urlList.bikeurl + 'classA/bikeservice/team/';
+//const toyUrl = base_url + "classA/toyservice/all/";
+const toyUrl = urlList.toyurl + "/classA/toyservice/all/";
+const foodUrl = urlList.foodurl + "classA/foodservice/all/";
+const bikeUrl = urlList.bikeurl + 'classA/bikeservice/all/';
+//const foodUrl =  base_url + "classA/foodservice/all/";
 console.log("Starting test");
 
 
@@ -31,6 +35,24 @@ describe("Class A services are working", () =>{
                 result= JSON.parse(body);
                 expect(result.membersNames.length).toBeGreaterThan(10);
                 expect(result.membersNames[0]).toBe('Aakash Gopal Vachhani');
+                done();
+            });
+        });
+
+		it("should have more than two elements for India", (done) => {
+            request.get(bikeUrl+"India", (error, response, body) =>{
+                result= JSON.parse(body);
+                expect(result.length).toBeGreaterThan(2);
+                expect(result[1].name).toBe('DJ Fat Bike 500W');
+                done();
+            });
+        });
+
+		it("should have more than two elements for USA", (done) => {
+            request.get(bikeUrl+"USA", (error, response, body) =>{
+                result= JSON.parse(body);
+                expect(result.length).toBeGreaterThan(2);
+                expect(result[1].name).toBe('DJ Fat Bike 500W');
                 done();
             });
         });
