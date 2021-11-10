@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
     status: "Good To Go!" ,
     links: [
       "/laptopservice/all/:location",
-      "/laptopservice/team"
+      "/laptopservice/team",
+      '/laptopservice/add'
     ]});
 });
 
@@ -41,6 +42,18 @@ router.get('/laptopservice/team', (request, response, next) => {
   } 
   else {
     response.status(404).send({ error: "Something Went wrong" });
+  }
+});
+
+router.post('/laptopservice/add', function( req, res, next) {
+  console.log(req.body);
+  const laptop = req.body;
+  let added = laptops.addLaptop(laptop);
+  res.setHeader('content-type', 'application/json');
+  if(added){
+    res.status(201).send({ statusCode: "Successfully added!" });
+  } else {
+    res.status(500).send({ error: "Could not write object to JSON file" });
   }
 });
 

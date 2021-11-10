@@ -27,7 +27,8 @@ app.use(function(req, res, next) {
     URLs: [
       "/",
       "/laptopservice/all/:location",
-      "/laptopservice/team"
+      "/laptopservice/team",
+      '/laptopservice/add'
     ]});
 });
 
