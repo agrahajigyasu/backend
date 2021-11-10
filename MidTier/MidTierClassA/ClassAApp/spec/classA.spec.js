@@ -1,12 +1,15 @@
 let request= require("request");
 const urlList=require('./../../../urls');
 //const base_url= "http://localhost:3021/";
-const teamUrl = urlList.bikeurl + 'classA/bikeservice/team/';
-//const toyUrl = base_url + "classA/toyservice/all/";
-const toyUrl = urlList.toyurl + "/classA/toyservice/all/";
-const foodUrl = urlList.foodurl + "classA/foodservice/all/";
-const bikeUrl = urlList.bikeurl + 'classA/bikeservice/all/';
-//const foodUrl =  base_url + "classA/foodservice/all/";
+const base_url = require("./../../../urls").classAurl;
+const teamUrl = base_url + 'classA/bikeservice/team/';
+//const teamUrl = urlList.bikeurl + 'classA/bikeservice/team/';
+const toyUrl = base_url + "classA/toyservice/all/";
+//const toyUrl = urlList.toyurl + "/classA/toyservice/all/";
+//const foodUrl = urlList.foodurl + "classA/foodservice/all/";
+//const bikeUrl = urlList.bikeurl + 'classA/bikeservice/all/';
+const bikeUrl = base_url + 'classA/bikeservice/all/';
+const foodUrl =  base_url + "classA/foodservice/all/";
 console.log("Starting test");
 
 
