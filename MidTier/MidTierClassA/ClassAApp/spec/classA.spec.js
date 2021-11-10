@@ -1,7 +1,7 @@
 let request= require("request");
 const urlList=require('./../../../urls');
 //const base_url= "http://localhost:3021/";
-const base_url = require("./../../../urls").classAurl;
+const base_url = require("./../../../urls").classAurl + '/';
 const teamUrl = base_url + 'classA/bikeservice/team/';
 //const teamUrl = urlList.bikeurl + 'classA/bikeservice/team/';
 const toyUrl = base_url + "classA/toyservice/all/";
