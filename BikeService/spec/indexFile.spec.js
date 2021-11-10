@@ -1,11 +1,11 @@
 let request= require("request");
 const baseUrl= "http://localhost:3031/";
-const teamUrl= baseUrl+ 'bikes/team/';
-const bikeUrl= baseUrl+ 'bikes/all/';
+const teamUrl= baseUrl+ 'bikeservice/team/';
+const bikeUrl= baseUrl+ 'bikeservice/all/';
 console.log("Starting test");
 
 describe("All routes are working", () =>{
-    describe("GET /bikes/team", () =>{
+    describe("GET /bikeservice/team", () =>{
         it("returns status code 200", (done) => {
             request.get(teamUrl, (error, response, body) => {
                 expect(response.statusCode).toBe(200);
@@ -23,7 +23,7 @@ describe("All routes are working", () =>{
         });
     });
 
-    describe("GET /bikes/all/", () =>{
+    describe("GET /bikeservice/all/", () =>{
         it("returns status code 200 for correct Parameters", (done) => {
             request.get(bikeUrl+'India', (error, response, body) => {
                 expect(response.statusCode).toBe(200);
