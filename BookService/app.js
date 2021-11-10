@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
     error: "Not found, Make sure URL is correct",
     URLs: [
       "/",
-      
+      "/bookservice/add",
       "/bookservice/all/:location",
       "/bookservice/team"
     ]});
