@@ -1,39 +1,43 @@
-let request= require("request");
-const base_url= "http://localhost:3022/";
+let request = require("request");
+
+const base_url = "http://localhost:3022";
+const classB = "/classB";
+
+const urls = {
+    books: "/bookservice",
+    dvds: "/dvdservice",
+    laptops: "/laptopservice"
+};
+
 console.log("Starting test");
 
-
-
-describe("Class B services are working", () =>{
-    describe("GET /", () =>{
+describe("Class B services are working", () => {
+    describe("GET /", () => {
         it("returns status code 200", (done) => {
-        request.get(base_url, (error, response, body) => {
-        expect(response.statusCode).toBe(200);
-        done();
+            request.get(base_url, (error, response, body) => {
+                expect(response.statusCode).toBe(200);
+                done();
+            });
         });
-        });
 
-    });
-    });
-
-
-
-    /*
-    describe("Wrong URL returns error", () =>{
         it("returns status code 404", (done) => {
-        request.get(base_url+'wrongURL', (error, response, body) => {
-        expect(response.statusCode).toBe(404);
-        done();
+            request.get(base_url + '/wrongURL', (error, response, body) => {
+                expect(response.statusCode).toBe(404);
+                done();
+            });
         });
-        });
+    });
 
-        it("returns list of valid URLs", (done) =>{
-        request.get(base_url+'wrongURL', (error, response, body) =>{
-        result= JSON.parse(body);
-        expect(result.URLs.length).toBeGreaterThan(2);
-        expect(result.URLs[1]).toBe('/Laptops/all/:location');
-        done();
+    describe("Responds for books requests", function () {
+        describe("GET /all/India", () => {
+            const books_url = base_url + classB + '/bookservice/all/India';
+            it("contains title", (done) => {
+                request.get(contacts_url, (error, response, body) => {
+                    expect(body).toBeTruthy();
+                    expect(body).toContain("Title");
+                    done();
+                });
+            });
         });
     });
 });
-*/
