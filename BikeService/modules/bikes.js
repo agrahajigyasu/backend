@@ -26,3 +26,17 @@ exports.add_tax = (value) => {
     }
     return result;
 };
+
+exports.add_bike = (bikeToAdd) => {
+    try {
+        let json_result = JSON.parse(read_json_file());
+        json_result.push(bikeToAdd);
+        let data = JSON.stringify(json_result);
+        fs.writeFileSync('./data/Bikejson.json', data);
+        console.log(JSON.parse(read_json_file()));
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};

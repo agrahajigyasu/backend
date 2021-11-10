@@ -5,22 +5,22 @@ console.log("Starting test");
 
 
 describe("Class A services are working", () =>{
-describe("GET /", () =>{
-it("returns status code 200", (done) => {
-request.get(base_url, (error, response, body) => {
-expect(response.statusCode).toBe(200);
-done();
-});
-});
+	describe("GET /", () =>{
+		it("returns status code 200", (done) => {
+			request.get(base_url, (error, response, body) => {
+				expect(response.statusCode).toBe(200);
+				done();
+			});
+		});
 
-// it("returns Good to go", (done) =>{
-// request.get(base_url, (error, response, body) =>{
-// result= JSON.parse(body);
-// expect(result.status).toBe("Good To Go!");
-// done();
-// });
-// });
-});
+		it("returns Good to go", (done) =>{
+			request.get(base_url, (error, response, body) =>{
+				result= JSON.parse(body);
+				expect(result.status).toBe("Good To Go!");
+				done();
+			});
+		});
+	});
 });
 
 

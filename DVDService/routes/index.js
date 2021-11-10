@@ -3,6 +3,30 @@ var router = express.Router();
 const createError = require('http-errors');
 const dvds = require('../modules/dvd');
 
+
+
+const dvdSchema = {
+  type: "object",
+  required: ["title", "mpaa_rating", "studio", "time", "price"],
+  properties: {
+    title: {
+      type: "string"
+    },
+    mpaa_rating: { 
+      type: "string"
+    },
+    studio: {
+      type: "string"
+    },
+    time: {
+      type: "number"
+    },
+    price: {
+      type: "number"
+    }
+  }
+};
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.status(200).send({ 
@@ -53,6 +77,20 @@ router.get('/dvdservice/team', function(req, res, next) {
       "Yash Agarwal",
       "Yogita Sangwan"]
     });
+});
+
+router.post('/dvdservice/add', function( req, res, next) {
+  console.log(req.body);
+  const dvd = req.body;
+  let added = dvds.add_dvd(dvd);
+  res.setHeader('content-type', 'application/json');
+  if(added){
+    res.status(201);
+    res.end("Success");
+  } else {
+    res.status(500);
+    res.end("Could not write object to JSON file");
+  }
 });
 
 module.exports = router;
