@@ -28,8 +28,8 @@ app.use(function(req, res, next) {
     error: "Not found, Make sure URL is correct",
     URLs: [
       "/",
-      "/bikes/all/:location",
-      "/bikes/team"
+      "/bikeservice/all/:location",
+      "/bikeservice/team"
     ]});
 });
 
