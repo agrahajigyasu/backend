@@ -28,14 +28,14 @@ router.get('/classB/:service/all/:location', (req, response, next) => {
   }
 
   if (location === "India") {
-    request('http://127.0.0.1:'+ port +'/' + service + '/all/Raleigh', { method: 'GET' }, (err, res, body) => {
+    request('http://127.0.0.1:'+ port +'/' + service + '/all/India', { method: 'GET' }, (err, res, body) => {
       if (err) { return console.log(err); }
       response.setHeader('content-type', 'application/json');
       response.end(body);
     });
   }
   if (location === "USA") {
-    request('http://127.0.0.1:'+ port +'/' + service + '/all/Durham', { method: 'GET' }, (err, res, body) => {
+    request('http://127.0.0.1:'+ port +'/' + service + '/all/USA', { method: 'GET' }, (err, res, body) => {
       if (err) { return console.log(err); }
       response.setHeader('content-type', 'application/json');
       response.end(body);
