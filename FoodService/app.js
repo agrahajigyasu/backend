@@ -31,7 +31,8 @@ app.use(function(req, res, next) {
     URLs: [
       "/",
       "/foodservice/all/:location",
-      "/foodservice/team"
+      "/foodservice/team",
+      "/foodservice/add"
     ]});
 });
 

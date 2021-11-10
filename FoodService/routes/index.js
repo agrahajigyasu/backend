@@ -47,6 +47,35 @@ router.get('/foodservice/team', (request, response, next) => {
 });
 
 
+router.post('/foodservice/add', function(req, res, next){
+  console.log(req.body);
+
+  let reqBody = req.body;
+
+  if(reqBody.name && reqBody.brand && reqBody.weight && reqBody.calories && reqBody.price)
+  {
+    console.log("Data recieved");
+    let foodItem = {
+      "name": req.body.name,
+      "brand": req.body.brand,
+      "weight": req.body.weight,
+      "calories": req.body.calories,
+      "price": req.body.price
+    }
+  
+    let added =food.addFood(foodItem);
+    if(added){
+      res.status(201).send({ statusCode: "Successfully added!" });
+    } else {
+      res.status(500).send({ error: "Could not write object to JSON file" });
+    }
+  } else {
+    res.status(400).end();
+  }
+
+});
+
+
 module.exports = router;
 
 // router.get('/food', (request, response, next) => {
