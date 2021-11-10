@@ -34,6 +34,19 @@ router.get('/bookservice/all/:location', (request, response, next) => {
   }
 });
 
+router.post('/bookservice/add', function( req, res, next) {
+  console.log(req.body);
+  const book = req.body;
+  let added = books.add_book(book);
+  res.setHeader('content-type', 'application/json');
+  if(added){
+    res.status(201);
+    res.end("Success");
+  } else {
+    res.status(500);
+    res.end("Could not write object to JSON file");
+  }
+});
 router.get('/bookservice/team', (request, response, next) => {
   console.log('got into books/team');
   response.setHeader('content-type', 'application/json');

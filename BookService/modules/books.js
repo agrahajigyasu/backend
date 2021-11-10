@@ -1,3 +1,5 @@
+
+let bookJson = './data/Booksjson.json';
 const fs = require('fs');
 
 let read_json_file = () => {
@@ -8,6 +10,21 @@ let read_json_file = () => {
 
 exports.list = function() {
     return JSON.parse(read_json_file());
+}
+
+
+exports.add_book = (bookToAdd) => {
+    try {
+        let json_result = JSON.parse(read_json_file());
+        json_result.push(bookToAdd);
+        let data = JSON.stringify(json_result);
+        fs.writeFileSync('./data/Booksjson.json', data);
+        console.log(JSON.parse(read_json_file()));
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
 }
 
 exports.price_difference = (value) => {
