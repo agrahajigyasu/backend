@@ -27,3 +27,16 @@ exports.priceList = (location) => {
     }
     return result;
 };
+
+exports.addToy = (toy) => {
+    try {
+        let result = JSON.parse(readJsonFile('./data/Toysjson.json'));
+        result.push(toy);
+        let data = JSON.stringify(result);
+        fs.writeFileSync('./data/Toysjson.json', data);
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};

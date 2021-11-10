@@ -34,18 +34,32 @@ router.get('/bookservice/all/:location', (request, response, next) => {
   }
 });
 
-router.post('/bookservice/add', function( req, res, next) {
+router.post('/bookservice/add', function(req, res, next){
   console.log(req.body);
-  const book = req.body;
-  let added = books.add_book(book);
-  res.setHeader('content-type', 'application/json');
-  if(added){
-    res.status(201);
-    res.end("Success");
+
+  let reqBody = req.body;
+
+  if(reqBody.Title && reqBody.Author && reqBody.price && reqBody.ISBN && reqBody.publisher)
+  {
+    console.log("Data recieved");
+    let bookItem = {
+      "Title": req.body.Title,
+      "Author": req.body.Author,
+      "price": req.body.price,
+      "ISBN": req.body.ISBN,
+      "publisher": req.body.publisher
+    }
+  
+    let added =books.add_book(bookItem);
+    if(added){
+      res.status(201).send({ statusCode: "Successfully added!" });
+    } else {
+      res.status(500).send({ error: "Could not write object to JSON file" });
+    }
   } else {
-    res.status(500);
-    res.end("Could not write object to JSON file");
+    res.status(400).end();
   }
+
 });
 router.get('/bookservice/team', (request, response, next) => {
   console.log('got into books/team');
